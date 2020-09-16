@@ -1,0 +1,88 @@
+.mGrowl {
+  z-index: 9999;
+  font-size: 12px;
+  position: fixed;
+  padding: 10px;
+}
+
+.mGrowl.top-left {
+  left: 0;
+  top: 0;
+}
+
+.mGrowl.top-right {
+  right: 0;
+  top: 0;
+}
+
+.mGrowl.bottom-left {
+  left: 0;
+  bottom: 0;
+}
+
+.mGrowl.bottom-right {
+  right: 0;
+  bottom: 0;
+}
+
+.mGrowl.center {
+  top: 0;
+}
+
+.mGrowl.center .mGrowl-notification,
+.mGrowl.center .mGrowl-closer {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mGrowl-notification {
+  zoom: 1;
+  width: 250px;
+  padding: 10px;
+  margin: 0 0 10px;
+  text-align: left;
+  display: none;
+  border-radius: 5px;
+  min-height: 40px;
+}
+
+.mGrowl-notification .mGrowl-header {
+  font-weight: bold;
+  font-size: .85em;
+}
+
+.mGrowl-notification .mGrowl-close {
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  z-index: 99;
+  float: right;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.mGrowl-closer {
+  background-color: #000000;
+  opacity: 0.9;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+  zoom: 1;
+  width: 100%;
+  padding: 4px 10px;
+  margin: 0 0 10px;
+  display: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: .9em;
+  font-weight: bold;
+  text-align: center;
+}
+
+/** Hide mGrowl when printing **/
+
+@media print {
+  .mGrowl {
+    display: none;
+  }
+}

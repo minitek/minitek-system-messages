@@ -6,7 +6,7 @@
 	<copyright>Copyright (C) 2011 - 2020 Minitek.gr. All rights reserved.</copyright>
 	<license>GNU General Public License version 3 or later</license>
 	<authorUrl>https://www.minitek.gr</authorUrl>
-	<version>4.0.2</version>
+	<version>4.0.3</version>
 	<description>An unobtrusive notification system for Joomla system messages.</description>
 
 	<files>
@@ -22,7 +22,7 @@
 	</languages>
 
 	<updateservers>
-		<server type="extension" priority="1" name="System - Minitek System Messages"><![CDATA[http://update.minitek.gr/joomla-extensions/plg_system_miniteksystemmessages.xml]]></server>
+		<server type="extension" priority="1" name="System - Minitek System Messages"><![CDATA[https://update.minitek.gr/joomla-extensions/plg_system_miniteksystemmessages.xml]]></server>
 	</updateservers>
 
 	<config>

@@ -67,7 +67,8 @@ class plgSystemMinitekSystemMessages extends JPlugin
 		if (($this->app->isClient('administrator') && $this->params->get('enable_backend', false)) ||
 			($this->app->isClient('administrator') && $this->params->get('enable_validation_backend', false)) ||
 			($this->app->isClient('site') && $this->params->get('enable_frontend', true)) ||
-			($this->app->isClient('site') && $this->params->get('enable_validation_frontend', true)))
+			($this->app->isClient('site') && $this->params->get('enable_validation_frontend', true)) ||
+			(\JComponentHelper::isInstalled('com_contentnotifications')))
 		{
 			$this->loadAssets();
 		}

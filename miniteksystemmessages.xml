@@ -3,15 +3,20 @@
 	<name>System - Minitek System Messages</name>
 	<author>Minitek.gr</author>
 	<creationDate>August 2017</creationDate>
-	<copyright>Copyright (C) 2011 - 2020 Minitek.gr. All rights reserved.</copyright>
+	<copyright>Copyright (C) 2011 - 2021 Minitek.gr. All rights reserved.</copyright>
 	<license>GNU General Public License version 3 or later</license>
 	<authorUrl>https://www.minitek.gr</authorUrl>
-	<version>4.0.3</version>
+	<version>4.0.4</version>
 	<description>An unobtrusive notification system for Joomla system messages.</description>
+
+	<media destination="plg_system_miniteksystemmessages" folder="media">
+		<folder>css</folder>
+		<folder>js</folder>
+		<filename>index.html</filename>
+	</media>
 
 	<files>
 		<folder>admin</folder>
-		<folder>assets</folder>
 		<filename plugin="miniteksystemmessages">miniteksystemmessages.php</filename>
 		<filename>index.html</filename>
 	</files>
@@ -22,16 +27,17 @@
 	</languages>
 
 	<updateservers>
-		<server type="extension" priority="1" name="System - Minitek System Messages"><![CDATA[https://update.minitek.gr/joomla-extensions/plg_system_miniteksystemmessages.xml]]></server>
+		<server type="extension" priority="1" name="System - Minitek System Messages"><![CDATA[https://update.minitek.gr/joomla-extensions/plg_system_miniteksystemmessages_pro.xml]]></server>
 	</updateservers>
 
 	<config>
 
 		<fields 
-			name="params" 
-			addfieldpath="/plugins/system/miniteksystemmessages/admin/fields">
+			name="params"
+			addfieldpath="/plugins/system/miniteksystemmessages/admin/fields"
+			addfieldprefix="Joomla\Component\Actionlogs\Administrator\Field">
 
-			<fieldset name="basic">
+			<fieldset name="basic" class="msm-admin">
 
 				<field
 					type="asset"
@@ -40,614 +46,380 @@
 
 			</fieldset>
 
-			<fieldset name="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_DISPLAY_SETTINGS">
+			<fieldset name="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_DISPLAY_SETTINGS" class="msm-admin">
 
 				<field
-					name="layout_mode"
-					type="profeature"
-					class="info"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_LAYOUT_MODE_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_LAYOUT_MODE_DESC"
+					name="appendTo"
+					type="text"
+					default="body"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_APPEND_TO_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_APPEND_TO_DESC"
 				/>
 
 				<field
-					name="mg_sticky"
+					name="position"
+					type="list"
+					default="top-left"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_POSITION_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_POSITION_DESC"
+				>
+					<option value="top-left">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_TOP_LEFT</option>
+					<option value="top-right">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_TOP_RIGHT</option>
+					<option value="bottom-left">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_BOTTOM_LEFT</option>
+					<option value="bottom-right">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_BOTTOM_RIGHT</option>
+					<option value="center">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_CENTER</option>
+					<option value="inline">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_INLINE</option>
+				</field>
+
+				<field
+					name="layout"
+					type="list"
+					default="popups"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_LAYOUT_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_LAYOUT_DESC"
+				>
+					<option value="popups">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_POPUPS</option>
+					<option value="panel">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_PANEL</option>
+				</field>
+
+				<field
+					name="theme"
+					type="list"
+					default="default"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_THEME_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_THEME_DESC"
+				>
+					<option value="default">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_DEFAULT</option>
+					<option value="compact">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_COMPACT</option>
+					<option value="minimal">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_MINIMAL</option>
+				</field>
+
+				<field
+					name="icons"
 					type="radio"
 					layout="joomla.form.field.radio.switcher"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MGROWL_STICKY_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MGROWL_STICKY_DESC"
+					default="1"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_ICONS_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_ICONS_DESC"
 				>
 					<option value="0">JNO</option>
 					<option value="1">JYES</option>
 				</field>
 
 				<field
-					name="mg_life"
+					name="spacing"
 					type="number"
-					default="3000"
-					filter="integer"
-					min="1"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MGROWL_LIFE_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MGROWL_LIFE_DESC"
-				/>
-
-				<field
-					name="mg_openduration"
-					type="number"
-					default="500"
-					filter="integer"
-					min="1"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MGROWL_OPEN_DURATION_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MGROWL_OPEN_DURATION_DESC"
-				/>
-
-				<field
-					name="mg_closeduration"
-					type="number"
-					default="500"
-					filter="integer"
-					min="1"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MGROWL_CLOSE_DURATION_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MGROWL_CLOSE_DURATION_DESC"
-				/>
-
-				<field type="separator" text="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_SEPARATOR_POPUPS" />
-
-				<field
-					name="mg_pool"
-					type="number"
-					default="0"
+					default="10"
 					filter="integer"
 					min="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MGROWL_POOL_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MGROWL_POOL_DESC"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_SPACING_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_SPACING_DESC"
 				/>
 
 				<field
-					name="mg_closer"
+					name="closer"
 					type="radio"
 					layout="joomla.form.field.radio.switcher"
 					default="1"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MGROWL_CLOSE_ALL_BUTTON_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MGROWL_CLOSE_ALL_BUTTON_DESC"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_CLOSE_ALL_BUTTON_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_CLOSE_ALL_BUTTON_DESC"
 				>
 					<option value="0">JHIDE</option>
 					<option value="1">JSHOW</option>
 				</field>
+				
+			</fieldset>
+
+			<fieldset name="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_BEHAVIOR" class="msm-admin">
 
 				<field
-					name="mg_theme"
+					name="insert"
 					type="list"
-					default="default"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MGROWL_THEME_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MGROWL_THEME_DESC"
+					default="before"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_INSERT_NEW_MESSAGE_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_INSERT_NEW_MESSAGE_DESC"
 				>
-					<option value="default">PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_OPTION_DEFAULT</option>
-					<option value="minimal">PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_OPTION_MINIMAL</option>
+					<option value="before">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_BEFORE</option>
+					<option value="after">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_AFTER</option>
 				</field>
 
 				<field
-					name="mg_position"
-					type="list"
-					default="top-left"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MGROWL_POSITION_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MGROWL_POSITION_DESC"
+					name="pool"
+					type="number"
+					default="0"
+					filter="integer"
+					min="0"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_POOL_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_POOL_DESC"
+				/>
+
+				<field
+					name="sticky"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					default="0"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_STICKY_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_STICKY_DESC"
 				>
-					<option value="top-left">PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_OPTION_TOP_LEFT</option>
-					<option value="top-right">PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_OPTION_TOP_RIGHT</option>
-					<option value="bottom-left">PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_OPTION_BOTTOM_LEFT</option>
-					<option value="bottom-right">PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_OPTION_BOTTOM_RIGHT</option>
-					<option value="center">PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_OPTION_CENTER</option>
-					<option value="screen-center">PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_OPTION_SCREEN_CENTER</option>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
 				</field>
 
 				<field
-					name="mg_glue"
-					type="list"
-					default="after"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MGROWL_GLUE_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MGROWL_GLUE_DESC"
+					name="life"
+					type="number"
+					default="3000"
+					filter="integer"
+					min="1"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_LIFE_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_LIFE_DESC"
+					showon="sticky:0"
+				/>
+
+				<field
+					name="progressbar"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					default="1"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_PROGRESS_BAR_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_PROGRESS_BAR_DESC"
+					showon="sticky:0"
 				>
-					<option value="before">PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_OPTION_BEFORE</option>
-					<option value="after">PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_OPTION_AFTER</option>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
 				</field>
+
+				<field
+					name="pauseOnHover"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					default="1"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_PAUSE_ON_HOVER_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_PAUSE_ON_HOVER_DESC"
+					showon="sticky:0"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="hideEmpty"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					default="0"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_HIDE_EMPTY_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_HIDE_EMPTY_DESC"
+					showon="layout:panel"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="effect"
+					type="list"
+					default="fade"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_EFFECT_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_EFFECT_DESC"
+				>
+					<option value="fade">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_FADE</option>
+					<option value="slide">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_SLIDE</option>
+				</field>
+
+				<field
+					name="easing"
+					type="list"
+					default="linear"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_EASING_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_EASING_DESC"
+				>
+					<option value="linear">linear</option>
+					<option value="ease">ease</option>
+					<option value="ease-in">ease-in</option>
+					<option value="ease-out">ease-out</option>
+					<option value="ease-in-out">ease-in-out</option>
+				</field>
+
+				<field
+					name="effectDuration"
+					type="number"
+					default="250"
+					filter="integer"
+					min="1"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_EFFECT_DURATION_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_EFFECT_DURATION_DESC"
+				/>
 
 				<field
 					name="group_messages"
 					type="radio"
 					layout="joomla.form.field.radio.switcher"
 					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_GROUP_MESSAGES_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_GROUP_MESSAGES_DESC"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_GROUP_MESSAGES_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_GROUP_MESSAGES_DESC"
 				>
 					<option value="0">JNO</option>
 					<option value="1">JYES</option>
 				</field>
 
-				<field type="separator" text="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_SEPARATOR_MESSAGE_COLORS" />
-
-				<field
-					name="message_background"
-					type="color"
-					default="#28c88a"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MESSAGE_BACKGROUND_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MESSAGE_BACKGROUND_DESC"
-				/>
-
-				<field
-					name="message_color"
-					type="color"
-					default="#ffffff"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MESSAGE_COLOR_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MESSAGE_COLOR_DESC"
-				/>
-
-				<field
-					name="message_icon"
-					type="color"
-					default="#ffffff"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MESSAGE_ICON_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MESSAGE_ICON_DESC"
-				/>
-
-				<field
-					name="message_border"
-					type="color"
-					default="#2fad7f"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MESSAGE_BORDER_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MESSAGE_BORDER_DESC"
-				/>
-
-				<field type="separator" text="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_SEPARATOR_NOTICE_COLORS" />
-
-				<field
-					name="notice_background"
-					type="color"
-					default="#e1f4ff"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_NOTICE_BACKGROUND_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_NOTICE_BACKGROUND_DESC"
-				/>
-
-				<field
-					name="notice_color"
-					type="color"
-					default="#4f90bf"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_NOTICE_COLOR_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_NOTICE_COLOR_DESC"
-				/>
-
-				<field
-					name="notice_icon"
-					type="color"
-					default="#4f90bf"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_NOTICE_ICON_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_NOTICE_ICON_DESC"
-				/>
-
-				<field
-					name="notice_border"
-					type="color"
-					default="#87ccfa"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_NOTICE_BORDER_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_NOTICE_BORDER_DESC"
-				/>
-
-				<field type="separator" text="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_SEPARATOR_WARNING_COLORS" />
-
-				<field
-					name="warning_background"
-					type="color"
-					default="#ed7248"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_WARNING_BACKGROUND_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_WARNING_BACKGROUND_DESC"
-				/>
-
-				<field
-					name="warning_color"
-					type="color"
-					default="#ffffff"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_WARNING_COLOR_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_WARNING_COLOR_DESC"
-				/>
-
-				<field
-					name="warning_icon"
-					type="color"
-					default="#ffffff"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_WARNING_ICON_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_WARNING_ICON_DESC"
-				/>
-
-				<field
-					name="warning_border"
-					type="color"
-					default="#d66437"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_WARNING_BORDER_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_WARNING_BORDER_DESC"
-				/>
-
-				<field type="separator" text="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_SEPARATOR_ERROR_COLORS" />
-
-				<field
-					name="error_background"
-					type="color"
-					default="#eb6f57"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ERROR_BACKGROUND_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ERROR_BACKGROUND_DESC"
-				/>
-
-				<field
-					name="error_color"
-					type="color"
-					default="#ffffff"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ERROR_COLOR_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ERROR_COLOR_DESC"
-				/>
-
-				<field
-					name="error_icon"
-					type="color"
-					default="#ffffff"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ERROR_ICON_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ERROR_ICON_DESC"
-				/>
-
-				<field
-					name="error_border"
-					type="color"
-					default="#f04124"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ERROR_BORDER_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ERROR_BORDER_DESC"
-				/>
-
-				<field type="separator" text="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_SEPARATOR_CLOSER_COLORS" />
-
-				<field
-					name="closer_background"
-					type="color"
-					default="#333333"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_CLOSER_BACKGROUND_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_CLOSER_BACKGROUND_DESC"
-				/>
-
-				<field
-					name="closer_color"
-					type="color"
-					default="#ffffff"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_CLOSER_COLOR_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_CLOSER_COLOR_DESC"
-				/>
-
-				<field
-					name="closer_border"
-					type="color"
-					default="#000000"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_CLOSER_BORDER_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_CLOSER_BORDER_DESC"
-				/>
-
-				<field type="separator" text="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_SEPARATOR_PANEL" />
-
-				<field
-					name="mg_panel_position"
-					type="profeature"
-					class="info"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MGROWL_POSITION_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_MGROWL_POSITION_DESC"
-				/>
-
-				<field
-					name="mg_panel_new"
-					type="profeature"
-					class="info"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_PANEL_NEW_MESSAGE_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_PANEL_NEW_MESSAGE_DESC"
-				/>
-
-				<field
-					name="panel_bell_color"
-					type="profeature"
-					class="info"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_PANEL_BELL_COLOR_LABEL"
-				/>
-
-				<field
-					name="panel_message_color"
-					type="profeature"
-					class="info"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_PANEL_MESSAGE_COLOR_LABEL"
-				/>
-
-				<field
-					name="panel_notice_color"
-					type="profeature"
-					class="info"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_PANEL_NOTICE_COLOR_LABEL"
-				/>
-
-				<field
-					name="panel_warning_color"
-					type="profeature"
-					class="info"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_PANEL_WARNING_COLOR_LABEL"
-				/>
-
-				<field
-					name="panel_error_color"
-					type="profeature"
-					class="info"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_PANEL_ERROR_COLOR_LABEL"
-				/>
-
-				<field
-					name="panel_footer_text"
-					type="profeature"
-					class="info"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_PANEL_FOOTER_TEXT_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_PANEL_FOOTER_TEXT_DESC"
-				/>
-
 			</fieldset>
 
-			<fieldset name="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_APPLICATION_MESSAGES">
+			<fieldset name="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_BASIC_MESSAGES" class="msm-admin">
 
 				<field
 					type="alertbox"
 					alert="info"
 					icon="info-circle"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_INFO"
-					text="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_APPLICATION_MESSAGES_DESC"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_INFO"
+					text="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_BASIC_MESSAGES_DESC"
 				/>
-
-				<field type="separator" text="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_SEPARATOR_BACKEND" />
-
-				<field
-					name="enable_backend"
-					type="radio"
-					layout="joomla.form.field.radio.switcher"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ENABLE_IN_BACKEND_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ENABLE_IN_BACKEND_DESC"
-				>
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
-				</field>
-
-				<field type="separator" text="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_SEPARATOR_FRONTEND" />
 
 				<field
 					name="enable_frontend"
 					type="radio"
 					layout="joomla.form.field.radio.switcher"
 					default="1"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ENABLE_IN_FRONTEND_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ENABLE_IN_FRONTEND_DESC"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_ENABLE_IN_FRONTEND_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_ENABLE_IN_FRONTEND_DESC"
+					disabled="disabled"
 				>
 					<option value="0">JNO</option>
 					<option value="1">JYES</option>
 				</field>
 
 				<field
-					name="login_message"
+					name="enable_backend"
 					type="radio"
 					layout="joomla.form.field.radio.switcher"
 					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_LOGIN_MESSAGE_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_LOGIN_MESSAGE_DESC"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_ENABLE_IN_BACKEND_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_ENABLE_IN_BACKEND_DESC"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+			</fieldset>
+
+			<fieldset name="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_USER_MESSAGES" class="msm-admin">
+
+				<field
+					name="enable_login_message"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					default="0"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_LOGIN_MESSAGE_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_LOGIN_MESSAGE_DESC"
 				>
 					<option value="0">JHIDE</option>
 					<option value="1">JSHOW</option>
 				</field>
 
-			</fieldset>
-
-			<fieldset name="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_VALIDATION_MESSAGES">
-
-				<field
-					type="alertbox"
-					alert="info"
-					icon="info-circle"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_INFO"
-					text="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_VALIDATION_MESSAGES_DESC"
+				<field 
+					type="spacer"
+					hr="true"
+					class="msm-spacer"
 				/>
 
-				<field type="separator" text="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_SEPARATOR_BACKEND" />
-
 				<field
-					name="enable_validation_backend"
+					name="enable_session_expiration"
 					type="radio"
 					layout="joomla.form.field.radio.switcher"
 					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ENABLE_IN_BACKEND_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ENABLE_IN_BACKEND_DESC"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_SESSION_EXPIRATION_MESSAGE_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_SESSION_EXPIRATION_MESSAGE_DESC"
 				>
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
 				</field>
-
-				<field type="separator" text="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_SEPARATOR_FRONTEND" />
-
-				<field
-					name="enable_validation_frontend"
-					type="radio"
-					layout="joomla.form.field.radio.switcher"
-					default="1"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ENABLE_IN_FRONTEND_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ENABLE_IN_FRONTEND_DESC"
-				>
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
-				</field>
-
-			</fieldset>
-
-			<fieldset name="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_ACTIONSLOG_MESSAGES">
-
-				<field
-					type="alertbox"
-					alert="info"
-					icon="info-circle"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_INFO"
-					text="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ACTIONS_LOG_DESC"
-				/>
-
-				<field type="separator" text="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_SEPARATOR_BACKEND" />
-
-				<field
-					name="enable_actions_log_backend"
-					type="profeature"
-					class="info"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ENABLE_IN_BACKEND_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ENABLE_IN_BACKEND_DESC"
-				/>
-
-				<field
-					name="actions_log_backend_extension"
-					type="profeature"
-					class="info"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ACTIONLOGS_EXTENSION_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ACTIONLOGS_EXTENSION_DESC"
-				/>
-
-				<field
-					name="actions_log_backend_access"
-					type="profeature"
-					class="info"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ACCESS_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ACCESS_DESC"
-				/>
-
-				<field type="separator" text="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_SEPARATOR_FRONTEND" />
-
-				<field
-					name="enable_actions_log_frontend"
-					type="profeature"
-					class="info"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ENABLE_IN_FRONTEND_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ENABLE_IN_FRONTEND_DESC"
-				/>
-
-				<field
-					name="actions_log_frontend_extension"
-					type="profeature"
-					class="info"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ACTIONLOGS_EXTENSION_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ACTIONLOGS_EXTENSION_DESC"
-				/>
-
-				<field
-					name="actions_log_frontend_access"
-					type="profeature"
-					class="info"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ACCESS_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ACCESS_DESC"
-				/>
-
-			</fieldset>
-
-			<fieldset name="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_REALTIME_MESSAGES">
-
-				<field type="separator" text="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_SEPARATOR_SESSION_EXPIRATION" />
-
-				<field
-					name="session_expiration_message"
-					type="profeature"
-					class="info"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_SESSION_EXPIRATION_MESSAGE_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_SESSION_EXPIRATION_MESSAGE_DESC"
-				/>
 
 				<field
 					name="redirect_session_expiration"
-					type="profeature"
-					class="info"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_REDIRECT_SESSION_EXPIRATION_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_REDIRECT_SESSION_EXPIRATION_DESC"
-				/>
+					type="menuitem"
+					default=""
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_REDIRECT_SESSION_EXPIRATION_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_REDIRECT_SESSION_EXPIRATION_DESC"
+					showon="enable_session_expiration:1"
+				>
+					<option value="">JNONE</option>
+				</field>
 
-				<field type="separator" text="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_SEPARATOR_LOGGED_USERS" />
-
-				<field type="separator" text="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_SEPARATOR_BACKEND_H4" />
-
-				<field
-					name="enable_logged_users_backend"
-					type="profeature"
-					class="info"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ENABLE_IN_BACKEND_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ENABLE_IN_BACKEND_DESC"
+				<field 
+					type="spacer"
+					hr="true"
+					class="msm-spacer"
 				/>
 
 				<field
-					name="logged_users_backend_access"
-					type="profeature"
-					class="info"
+					name="enable_logged_users"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
 					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ACCESS_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ACCESS_DESC"
-				/>
-
-				<field type="separator" text="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_SEPARATOR_FRONTEND_H4" />
-
-				<field
-					name="enable_logged_users_frontend"
-					type="profeature"
-					class="info"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ENABLE_IN_FRONTEND_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ENABLE_IN_FRONTEND_DESC"
-				/>
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_LOGGED_USERS_COUNT_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_LOGGED_USERS_COUNT_DESC"
+				>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
 
 				<field
-					name="logged_users_frontend_access"
-					type="profeature"
-					class="info"
-					default="0"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ACCESS_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_ACCESS_DESC"
+					name="logged_users_access"
+					type="accesslevel"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_LOGGED_USERS_ACCESS_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_LOGGED_USERS_ACCESS_DESC"
+					multiple="true"
+					default="6"
+					layout="joomla.form.field.list-fancy-select"
+					showon="enable_logged_users:1"
 				/>
 
 			</fieldset>
 
-			<fieldset name="advanced">
+			<fieldset name="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_ACTIONSLOG_MESSAGES" class="msm-admin">
 
 				<field
-					name="joomla_container"
-					type="text"
-					default="system-message-container"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_CONTAINER_ID_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_CONTAINER_ID_DESC"
+					type="alertbox"
+					alert="info"
+					icon="info-circle"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_INFO"
+					text="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_ACTIONS_LOG_DESC"
 				/>
 
 				<field
-					name="load_fontawesome"
+					name="enable_actions_log"
 					type="radio"
 					layout="joomla.form.field.radio.switcher"
-					default="1"
-					label="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_LOAD_FONT_AWESOME_LABEL"
-					description="PLG_SYSTEM_MINITEK_SYSTEM_MESSAGES_CONFIG_LOAD_FONT_AWESOME_DESC"
+					default="0"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_ACTIONS_LOG_MESSAGES_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_ACTIONS_LOG_MESSAGES_DESC"
 				>
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
 				</field>
+
+				<field
+					name="actions_log_extensions"
+					type="extension"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_ACTIONS_LOG_EXTENSIONS_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_ACTIONS_LOG_EXTENSIONS_DESC"
+					multiple="true"
+					default="all"
+					layout="joomla.form.field.list-fancy-select"
+					showon="enable_actions_log:1"
+				>
+					<option value="all">JALL</option>
+				</field>
+
+				<field
+					name="actions_log_access"
+					type="accesslevel"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_ACTIONS_LOG_ACCESS_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_ACTIONS_LOG_ACCESS_DESC"
+					multiple="true"
+					default="6"
+					layout="joomla.form.field.list-fancy-select"
+					showon="enable_actions_log:1"
+				/>
 
 			</fieldset>
 

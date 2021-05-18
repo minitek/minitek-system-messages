@@ -27,7 +27,7 @@
 	</languages>
 
 	<updateservers>
-		<server type="extension" priority="1" name="System - Minitek System Messages"><![CDATA[https://update.minitek.gr/joomla-extensions/plg_system_miniteksystemmessages_pro.xml]]></server>
+		<server type="extension" priority="1" name="System - Minitek System Messages"><![CDATA[https://update.minitek.gr/joomla-extensions/plg_system_miniteksystemmessages.xml]]></server>
 	</updateservers>
 
 	<config>
@@ -36,15 +36,6 @@
 			name="params"
 			addfieldpath="/plugins/system/miniteksystemmessages/admin/fields"
 			addfieldprefix="Joomla\Component\Actionlogs\Administrator\Field">
-
-			<fieldset name="basic" class="msm-admin">
-
-				<field
-					type="asset"
-					path="/plugins/system/miniteksystemmessages/admin/"
-				/>
-
-			</fieldset>
 
 			<fieldset name="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_DISPLAY_SETTINGS" class="msm-admin">
 
@@ -323,26 +314,21 @@
 
 				<field
 					name="enable_session_expiration"
-					type="radio"
-					layout="joomla.form.field.radio.switcher"
+					type="profeature"
+					class="info"
 					default="0"
 					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_SESSION_EXPIRATION_MESSAGE_LABEL"
 					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_SESSION_EXPIRATION_MESSAGE_DESC"
-				>
-					<option value="0">JHIDE</option>
-					<option value="1">JSHOW</option>
-				</field>
+				/>
 
 				<field
 					name="redirect_session_expiration"
-					type="menuitem"
-					default=""
+					type="profeature"
+					class="info"
+					default="0"
 					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_REDIRECT_SESSION_EXPIRATION_LABEL"
 					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_REDIRECT_SESSION_EXPIRATION_DESC"
-					showon="enable_session_expiration:1"
-				>
-					<option value="">JNONE</option>
-				</field>
+				/>
 
 				<field 
 					type="spacer"
@@ -352,25 +338,20 @@
 
 				<field
 					name="enable_logged_users"
-					type="radio"
-					layout="joomla.form.field.radio.switcher"
+					type="profeature"
+					class="info"
 					default="0"
 					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_LOGGED_USERS_COUNT_LABEL"
 					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_LOGGED_USERS_COUNT_DESC"
-				>
-					<option value="0">JHIDE</option>
-					<option value="1">JSHOW</option>
-				</field>
+				/>
 
 				<field
 					name="logged_users_access"
-					type="accesslevel"
+					type="profeature"
+					class="info"
+					default="0"
 					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_LOGGED_USERS_ACCESS_LABEL"
 					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_LOGGED_USERS_ACCESS_DESC"
-					multiple="true"
-					default="6"
-					layout="joomla.form.field.list-fancy-select"
-					showon="enable_logged_users:1"
 				/>
 
 			</fieldset>
@@ -387,38 +368,29 @@
 
 				<field
 					name="enable_actions_log"
-					type="radio"
-					layout="joomla.form.field.radio.switcher"
+					type="profeature"
+					class="info"
 					default="0"
 					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_ACTIONS_LOG_MESSAGES_LABEL"
 					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_ACTIONS_LOG_MESSAGES_DESC"
-				>
-					<option value="0">JHIDE</option>
-					<option value="1">JSHOW</option>
-				</field>
+				/>
 
 				<field
 					name="actions_log_extensions"
-					type="extension"
+					type="profeature"
+					class="info"
+					default="0"
 					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_ACTIONS_LOG_EXTENSIONS_LABEL"
 					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_ACTIONS_LOG_EXTENSIONS_DESC"
-					multiple="true"
-					default="all"
-					layout="joomla.form.field.list-fancy-select"
-					showon="enable_actions_log:1"
-				>
-					<option value="all">JALL</option>
-				</field>
+				/>
 
 				<field
 					name="actions_log_access"
-					type="accesslevel"
+					type="profeature"
+					class="info"
+					default="0"
 					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_ACTIONS_LOG_ACCESS_LABEL"
 					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_ACTIONS_LOG_ACCESS_DESC"
-					multiple="true"
-					default="6"
-					layout="joomla.form.field.list-fancy-select"
-					showon="enable_actions_log:1"
 				/>
 
 			</fieldset>

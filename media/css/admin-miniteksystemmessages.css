@@ -1,0 +1,55 @@
+/* Separators */
+
+.control-label .msm-spacer {
+	display: block;
+	color: #555;
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	box-sizing: border-box;
+}
+
+.control-label .msm-spacer,
+.control-label .msm-spacer label {
+	width: 100%;
+	display: block;
+}
+
+.control-label .msm-spacer h3,
+.control-label .msm-spacer h4 {
+	margin: 0;
+	padding: 10px;
+	background: none repeat scroll 0 0 #e8f3f9;
+	font-weight: bold;
+}
+
+.control-label .msm-spacer h3 {
+	font-size: 1.25rem;
+}
+
+.control-label .msm-spacer h3 small {
+	font-weight: bold;
+}
+
+.control-label .msm-spacer h4 {
+	font-size: 1.05rem;
+}
+
+/* Backend */
+
+div[class^="column-count-"]
+{
+	column-count: 1;
+}
+
+.alert h4 {
+	margin: 0.5rem 0 1rem;
+}
+
+.alert p {
+	margin: 0 0 0.5rem;
+}
+
+.alert a[target="_blank"]::before {
+	content: none;
+}

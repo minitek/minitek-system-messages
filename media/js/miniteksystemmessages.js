@@ -3,17 +3,7 @@
 
   var system_container;
   var options = Joomla.getOptions("miniteksystemmessages");
-  var token = options.token + "=1";
-  var is_site = options.is_site;
-  var site_path =
-    is_site != true ? options.site_path + "administrator/" : options.site_path;
-  var lifetime = options.lifetime;
-  var user_id = options.user_id;
   var application_messages = options.application_messages;
-  var session_message = options.session_message;
-  var session_redirect_link = options.session_redirect_link;
-  var actions_log = options.actions_log;
-  var logged_users = options.logged_users;
   var error_text = options.error_text;
   var success_text = options.success_text;
   var notice_text = options.notice_text;
@@ -40,13 +30,6 @@
   var effect = options.effect;
   var easing = options.easing;
   var effectDuration = options.effectDuration;
-
-  function HtmlToElement(htmlString) {
-    var div = document.createElement("div");
-    div.innerHTML = htmlString.trim();
-
-    return div.firstChild;
-  }
 
   // Create a new message
   function createMessage(content, type, issticky) {
@@ -78,40 +61,6 @@
       title: title,
       content: content,
       sticky: _sticky,
-    });
-  }
-
-  // Check for expired user session
-  function checkSession() {
-    Joomla.request({
-      url:
-        site_path +
-        "index.php?group=system&plugin=miniteksystemmessages&type=checkSession&" +
-        token,
-      method: "GET",
-      onSuccess: (response, xhr) => {
-        if (response) {
-          var messages = JSON.parse(response);
-
-          messages.forEach(function (element) {
-            var content =
-              '<div class="alert-message">' + element.message + "</div>";
-            createMessage(content, element.type, true);
-          });
-
-          if (is_site && session_redirect_link)
-            window.location.href = session_redirect_link;
-        } else {
-          lifetime = lifetime * 60000 + 1000;
-
-          setTimeout(function () {
-            checkSession();
-          }, lifetime);
-        }
-      },
-      onError: (xhr) => {
-        console.log(xhr);
-      },
     });
   }
 
@@ -156,52 +105,6 @@
     observer.observe(system_container, config);
   }
 
-  // Get actions log notifications via server-sent event
-  function actionsLogEvent() {
-    var es = new EventSource(
-      site_path +
-        "index.php?group=system&plugin=miniteksystemmessages&type=actionsLogEvent&" +
-        token
-    );
-
-    var listener = function (event) {
-      if (typeof event.data !== "undefined") {
-        var content = JSON.parse(event.data).msg;
-        content = '<div class="alert-message">' + content + "</div>";
-        var type = JSON.parse(event.data).type;
-
-        createMessage(content, type);
-      }
-    };
-
-    es.addEventListener("open", listener);
-    es.addEventListener("message", listener);
-    es.addEventListener("error", listener);
-  }
-
-  // Get logged in users via server-sent event
-  function loggedUsersEvent() {
-    var es = new EventSource(
-      site_path +
-        "index.php?group=system&plugin=miniteksystemmessages&type=loggedUsersEvent&" +
-        token
-    );
-
-    var listener = function (event) {
-      if (typeof event.data !== "undefined") {
-        var content = JSON.parse(event.data).msg;
-        content = '<div class="alert-message">' + content + "</div>";
-        var type = "info";
-
-        createMessage(content, type);
-      }
-    };
-
-    es.addEventListener("open", listener);
-    es.addEventListener("message", listener);
-    es.addEventListener("error", listener);
-  }
-
   document.addEventListener("DOMContentLoaded", function () {
     system_container = document.querySelector("#system-message-container");
 
@@ -242,16 +145,7 @@
       });
     }
 
-    // Session expiration message
-    if (session_message && user_id > 0) checkSession();
-
     // Observe container
     observeContainer();
-
-    // Actions log
-    if (actions_log) actionsLogEvent();
-
-    // Logged in users
-    if (logged_users) loggedUsersEvent();
   });
 })(document, Joomla);

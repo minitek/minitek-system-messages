@@ -34,7 +34,7 @@ class JFormFieldAlertBox extends JFormField
 			return;
 		}
 
-		$html = '<div class="pro-alert alert alert-'.$alert.'">';
+		$html = '<div class="alert alert-'.$alert.'">';
 
 		if ($label)
 		{

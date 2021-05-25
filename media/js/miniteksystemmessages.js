@@ -20,13 +20,11 @@
   var pool = options.pool;
   var sticky = options.sticky;
   var life = options.life;
-  var progressbar = options.progressbar;
   var pauseOnHover = options.pauseOnHover;
   var headerText = options.headerText;
   var closer = options.closer;
   var closeText = options.closeText;
   var loadMoreText = options.loadMoreText;
-  var hideEmpty = options.hideEmpty;
   var effect = options.effect;
   var easing = options.easing;
   var effectDuration = options.effectDuration;
@@ -120,13 +118,13 @@
       pool: pool,
       sticky: sticky,
       life: life,
-      progressbar: progressbar,
+      progressbar: false,
       pauseOnHover: pauseOnHover,
       headerText: headerText,
       closer: closer,
       closeText: closeText,
       loadMoreText: loadMoreText,
-      hideEmpty: hideEmpty,
+      hideEmpty: true,
       effect: effect,
       easing: easing,
       effectDuration: effectDuration,

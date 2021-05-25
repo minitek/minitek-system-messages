@@ -152,7 +152,6 @@ class plgSystemMinitekSystemMessages extends JPlugin
 		$spacing = $this->params->get('spacing', 10);
 		$pool = $this->params->get('pool', 0);
 		$sticky = $this->params->get('sticky', 0) ? true : false;
-		$progressbar = $this->params->get('progressbar', 1) ? true : false;
 		$pauseOnHover = $this->params->get('pauseOnHover', 1) ? true : false;
 		$closer = $this->params->get('closer', 1) ? true : false;
 		$hideEmpty = $this->params->get('hideEmpty', 0) ? true : false;
@@ -190,13 +189,11 @@ class plgSystemMinitekSystemMessages extends JPlugin
 			'pool' => $pool,
 			'sticky' => $sticky,
 			'life' => $this->params->get('life', 3000),
-			'progressbar' => $progressbar,
 			'pauseOnHover' => $pauseOnHover,
 			'headerText' => Text::_('PLG_SYSTEM_MINITEKSYSTEMMESSAGES_HEADER_TEXT'),
 			'closer' => $closer,
 			'closeText' => Text::_('PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CLOSE_TEXT'),
 			'loadMoreText' => Text::_('PLG_SYSTEM_MINITEKSYSTEMMESSAGES_LOAD_MORE_TEXT'),
-			'hideEmpty' => $hideEmpty,
 			'effect' => $effect,
 			'easing' => $easing,
 			'effectDuration' => $effectDuration

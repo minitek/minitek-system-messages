@@ -59,7 +59,7 @@
 					<option value="bottom-left">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_BOTTOM_LEFT</option>
 					<option value="bottom-right">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_BOTTOM_RIGHT</option>
 					<option value="center">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_CENTER</option>
-					<option value="inline">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_INLINE</option>
+					<option value="" disabled="disabled">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_INLINE</option>
 				</field>
 
 				<field
@@ -70,7 +70,7 @@
 					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_LAYOUT_DESC"
 				>
 					<option value="popups">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_POPUPS</option>
-					<option value="panel">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_PANEL</option>
+					<option value="" disabled="disabled">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_PANEL</option>
 				</field>
 
 				<field
@@ -82,7 +82,7 @@
 				>
 					<option value="default">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_DEFAULT</option>
 					<option value="compact">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_COMPACT</option>
-					<option value="minimal">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_MINIMAL</option>
+					<option value="" disabled="disabled">PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_OPTION_MINIMAL</option>
 				</field>
 
 				<field
@@ -169,16 +169,13 @@
 
 				<field
 					name="progressbar"
-					type="radio"
-					layout="joomla.form.field.radio.switcher"
-					default="1"
+					type="profeature"
+					class="info"
+					default="0"
 					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_PROGRESS_BAR_LABEL"
 					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_PROGRESS_BAR_DESC"
 					showon="sticky:0"
-				>
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
-				</field>
+				/>
 
 				<field
 					name="pauseOnHover"
@@ -188,19 +185,6 @@
 					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_PAUSE_ON_HOVER_LABEL"
 					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_PAUSE_ON_HOVER_DESC"
 					showon="sticky:0"
-				>
-					<option value="0">JNO</option>
-					<option value="1">JYES</option>
-				</field>
-
-				<field
-					name="hideEmpty"
-					type="radio"
-					layout="joomla.form.field.radio.switcher"
-					default="0"
-					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_HIDE_EMPTY_LABEL"
-					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_HIDE_EMPTY_DESC"
-					showon="layout:panel"
 				>
 					<option value="0">JNO</option>
 					<option value="1">JYES</option>

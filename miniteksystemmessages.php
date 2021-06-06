@@ -105,39 +105,6 @@ class plgSystemMinitekSystemMessages extends JPlugin
 
 		$document->addStyleDeclaration($hide_container_css);
 
-		// Parse application messages
-		$messages = $this->app->getMessageQueue();
-
-		if (!empty($messages) && count($messages)) {
-			$application_messages = $messages;
-
-			// Group messages by type
-			if ($this->params->get('group_messages', false)) {
-				$merged_messages = array();
-
-				foreach ($application_messages as $message) {
-					if (isset($merged_messages[$message['type']])) {
-						$temp = $merged_messages[$message['type']];
-						$temp['message'] .= '<div class="alert-message">' . $message['message'] . '</div>';
-					} else {
-						$temp = $message;
-						$temp['message'] = '<div class="alert-message">' . $message['message'] . '</div>';
-					}
-
-					$merged_messages[$message['type']] = $temp;
-				}
-
-				$application_messages = array_values($merged_messages);
-			} else {
-				// Wrap each message in div.alert-message
-				foreach ($application_messages as &$message) {
-					$message['message'] = '<div class="alert-message">' . $message['message'] . '</div>';
-				}
-			}
-		} else {
-			$application_messages = [];
-		}
-
 		// Load css
 		$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 		$wa->registerAndUseStyle('plg_system_miniteksystemmessages', 'plg_system_miniteksystemmessages/miniteksystemmessages.css');
@@ -173,7 +140,6 @@ class plgSystemMinitekSystemMessages extends JPlugin
 
 		// Add script options
 		$document->addScriptOptions('miniteksystemmessages', array(
-			'application_messages' => $application_messages,
 			'error_text' => Text::_('ERROR'),
 			'success_text' => Text::_('MESSAGE'),
 			'notice_text' => Text::_('NOTICE'),

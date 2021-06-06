@@ -3,7 +3,6 @@
 
   var system_container;
   var options = Joomla.getOptions("miniteksystemmessages");
-  var application_messages = options.application_messages;
   var error_text = options.error_text;
   var success_text = options.success_text;
   var notice_text = options.notice_text;
@@ -132,16 +131,6 @@
 
     // Initialize Polipop
     polipop = new Polipop("polipop", polipopOptions);
-
-    // Parse application messages
-    if (application_messages.length) {
-      system_container.style.display = "none";
-      system_container.innerHTML = "";
-
-      application_messages.forEach(function (element) {
-        createMessage(element.message, element.type);
-      });
-    }
 
     // Observe container
     observeContainer();

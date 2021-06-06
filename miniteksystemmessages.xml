@@ -6,7 +6,7 @@
 	<copyright>Copyright (C) 2011 - 2021 Minitek.gr. All rights reserved.</copyright>
 	<license>GNU General Public License version 3 or later</license>
 	<authorUrl>https://www.minitek.gr</authorUrl>
-	<version>4.0.5</version>
+	<version>4.0.6</version>
 	<description>An unobtrusive notification system for Joomla system messages.</description>
 
 	<media destination="plg_system_miniteksystemmessages" folder="media">

@@ -121,6 +121,86 @@
 				
 			</fieldset>
 
+			<fieldset name="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_COLORS" class="msm-admin">
+
+				<field type="separator" text="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_SEPARATOR_MESSAGE_COLORS" />
+
+				<field
+					name="message_color"
+					type="color"
+					default="#0ec47d"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_COLOR_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_COLOR_DESC"
+				/>
+
+				<field
+					name="message_text"
+					type="color"
+					default="#ffffff"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_TEXT_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_TEXT_DESC"
+					showon="theme:default[OR]theme:compact"
+				/>
+
+				<field type="separator" text="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_SEPARATOR_INFO_COLORS" />
+
+				<field
+					name="info_color"
+					type="color"
+					default="#00b1fe"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_COLOR_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_COLOR_DESC"
+				/>
+
+				<field
+					name="info_text"
+					type="color"
+					default="#ffffff"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_TEXT_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_TEXT_DESC"
+					showon="theme:default[OR]theme:compact"
+				/>
+
+				<field type="separator" text="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_SEPARATOR_WARNING_COLORS" />
+
+				<field
+					name="warning_color"
+					type="color"
+					default="#ffc107"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_COLOR_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_COLOR_DESC"
+				/>
+
+				<field
+					name="warning_text"
+					type="color"
+					default="#555555"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_TEXT_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_TEXT_DESC"
+					showon="theme:default[OR]theme:compact"
+				/>
+
+				<field type="separator" text="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_SEPARATOR_ERROR_COLORS" />
+
+				<field
+					name="error_color"
+					type="color"
+					default="#f76860"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_COLOR_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_COLOR_DESC"
+				/>
+
+				<field
+					name="error_text"
+					type="color"
+					default="#ffffff"
+					label="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_TEXT_LABEL"
+					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_TEXT_DESC"
+					showon="theme:default[OR]theme:compact"
+				/>
+
+			</fieldset>
+
 			<fieldset name="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_BEHAVIOR" class="msm-admin">
 
 				<field

@@ -6,6 +6,26 @@
 
 /* Backend */
 
+.msm-separator {
+  color: #555;
+  margin: 10px 0 0;
+  padding: 0;
+  float: left;
+  width: 100%;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+.msm-separator h3 {
+  margin: 0;
+  padding: 10px;
+  background: none repeat scroll 0 0 #e8f3f9;
+}
+
+.msm-separator h3 small {
+  font-weight: bold;
+}
+
 fieldset.msm-admin .control-label .msm-spacer {
   display: block;
   color: #555;

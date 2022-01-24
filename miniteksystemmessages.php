@@ -68,6 +68,13 @@ class plgSystemMinitekSystemMessages extends JPlugin
 		if ($this->app->isClient('site') || ($this->app->isClient('administrator') && $this->params->get('enable_backend', false))) {
 			$this->loadAssets();
 		}
+
+		// Load admin css
+		if ($this->app->isClient('administrator')) 
+		{
+			$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+			$wa->registerAndUseStyle('plg_system_miniteksystemmessages', 'plg_system_miniteksystemmessages/miniteksystemmessages.css');
+		}
 	}
 
 	/**
@@ -104,10 +111,6 @@ class plgSystemMinitekSystemMessages extends JPlugin
 		}';
 
 		$document->addStyleDeclaration($hide_container_css);
-
-		// Load css
-		$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
-		$wa->registerAndUseStyle('plg_system_miniteksystemmessages', 'plg_system_miniteksystemmessages/miniteksystemmessages.css');
 
 		// Polipop options 
 		$appendTo = $this->params->get('appendTo', 'body');
@@ -181,6 +184,7 @@ class plgSystemMinitekSystemMessages extends JPlugin
 		$document->addStyleDeclaration($css);
 
 		// Load Polipop
+		$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 		$wa->registerAndUseStyle('plg_system_miniteksystemmessages.polipop.core', 'plg_system_miniteksystemmessages/polipop.core.css');
 
 		if ($theme === 'default')

@@ -105,6 +105,8 @@
   document.addEventListener("DOMContentLoaded", function () {
     system_container = document.querySelector("#system-message-container");
 
+    if (system_container == null) return;
+
     // Polipop options
     var polipopOptions = {
       appendTo: appendTo,

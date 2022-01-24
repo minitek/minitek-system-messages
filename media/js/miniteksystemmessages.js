@@ -77,10 +77,14 @@
               var children = node.childNodes;
 
               children.forEach(function (child) {
-                var content = child.innerHTML;
+                if (child.classList.contains("alert-wrapper")) {
+                  child.childNodes.forEach(function (_message) {
+                    _message.removeAttribute("class");
+                  });
 
-                if (child.classList.contains("alert-wrapper"))
+                  var content = child.innerHTML;
                   createMessage(content, node_type);
+                }
               });
 
               system_container.style.display = "none";

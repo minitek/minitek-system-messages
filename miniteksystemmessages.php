@@ -2,7 +2,7 @@
 
 /**
  * @title        Minitek System Messages
- * @copyright    Copyright (C) 2011-2021 Minitek, All rights reserved.
+ * @copyright    Copyright (C) 2011-2023 Minitek, All rights reserved.
  * @license      GNU General Public License version 3 or later.
  * @author url   https://www.minitek.gr/
  * @developers   Minitek.gr / Yannis Maragos
@@ -14,21 +14,17 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Session\Session;
 use Joomla\CMS\Uri\Uri;
-use Joomla\String\StringHelper;
-use Joomla\Component\Actionlogs\Administrator\Helper\ActionlogsHelper;
+use Joomla\CMS\Plugin\CMSPlugin;
 
 /**
  * Minitek System Messages Plugin.
- *
- * @since  3.0.1
  */
-class plgSystemMinitekSystemMessages extends JPlugin
+class plgSystemMinitekSystemMessages extends CMSPlugin
 {
 	/**
 	 * Application object.
 	 *
 	 * @var    JApplicationCms
-	 * @since  3.0.1
 	 */
 	var $app;
 
@@ -36,7 +32,6 @@ class plgSystemMinitekSystemMessages extends JPlugin
 	 * Load the language file on instantiation.
 	 *
 	 * @var    boolean
-	 * @since  3.0.1
 	 */
 	protected $autoloadLanguage = true;
 
@@ -45,8 +40,6 @@ class plgSystemMinitekSystemMessages extends JPlugin
 	 *
 	 * @param   object  &$subject  The object to observe.
 	 * @param   array   $config    An optional associative array of configuration settings.
-	 *
-	 * @since   3.0.1
 	 */
 	public function __construct(&$subject, $config)
 	{
@@ -60,8 +53,6 @@ class plgSystemMinitekSystemMessages extends JPlugin
 	 * Loads assets.
 	 *
 	 * @return   void
-	 *
-	 * @since   3.0.1
 	 */
 	public function onBeforeRender()
 	{
@@ -70,8 +61,7 @@ class plgSystemMinitekSystemMessages extends JPlugin
 		}
 
 		// Load admin css
-		if ($this->app->isClient('administrator')) 
-		{
+		if ($this->app->isClient('administrator')) {
 			$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 			$wa->registerAndUseStyle('plg_system_miniteksystemmessages', 'plg_system_miniteksystemmessages/miniteksystemmessages.css');
 		}
@@ -83,8 +73,6 @@ class plgSystemMinitekSystemMessages extends JPlugin
 	 * @param   array  $options  Array holding options (user, responseType)
 	 *
 	 * @return  void
-	 *
-	 * @since   3.0.1
 	 */
 	public function onUserAfterLogin($options)
 	{
@@ -98,21 +86,19 @@ class plgSystemMinitekSystemMessages extends JPlugin
 	 * Loads css and js.
 	 *
 	 * @return   void
-	 *
-	 * @since   3.0.1
 	 */
 	public function loadAssets()
 	{
 		$document = Factory::getDocument();
 
-		// Hide system-message-container 
+		// Hide system-message-container
 		$hide_container_css = '#system-message-container {
 			display: none;
 		}';
 
 		$document->addStyleDeclaration($hide_container_css);
 
-		// Polipop options 
+		// Polipop options
 		$appendTo = $this->params->get('appendTo', 'body');
 		$position = $this->params->get('position', 'center');
 		$layout = $this->params->get('layout', 'popups');
@@ -129,7 +115,7 @@ class plgSystemMinitekSystemMessages extends JPlugin
 		$easing = $this->params->get('easing', 'linear');
 		$effectDuration = $this->params->get('effectDuration', 250);
 
-		// Colors 
+		// Colors
 		$message_color = $this->params->get('message_color', '#0ec47d');
 		$message_text = $this->params->get('message_text', '#ffffff');
 		$info_color = $this->params->get('info_color', '#00b1fe');

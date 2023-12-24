@@ -3,10 +3,10 @@
 	<name>System - Minitek System Messages</name>
 	<author>Minitek.gr</author>
 	<creationDate>August 2017</creationDate>
-	<copyright>Copyright (C) 2011 - 2022 Minitek.gr. All rights reserved.</copyright>
+	<copyright>Copyright (C) 2011 - 2023 Minitek.gr. All rights reserved.</copyright>
 	<license>GNU General Public License version 3 or later</license>
 	<authorUrl>https://www.minitek.gr</authorUrl>
-	<version>4.0.8</version>
+	<version>5.0.1</version>
 	<description>An unobtrusive notification system for Joomla system messages.</description>
 
 	<media destination="plg_system_miniteksystemmessages" folder="media">
@@ -32,7 +32,7 @@
 
 	<config>
 
-		<fields 
+		<fields
 			name="params"
 			addfieldpath="/plugins/system/miniteksystemmessages/admin/fields"
 			addfieldprefix="Joomla\Component\Actionlogs\Administrator\Field">
@@ -118,7 +118,7 @@
 					<option value="0">JHIDE</option>
 					<option value="1">JSHOW</option>
 				</field>
-				
+
 			</fieldset>
 
 			<fieldset name="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_COLORS" class="msm-admin">
@@ -370,7 +370,7 @@
 					<option value="1">JSHOW</option>
 				</field>
 
-				<field 
+				<field
 					type="spacer"
 					hr="true"
 					class="msm-spacer"
@@ -394,7 +394,7 @@
 					description="PLG_SYSTEM_MINITEKSYSTEMMESSAGES_CONFIG_REDIRECT_SESSION_EXPIRATION_DESC"
 				/>
 
-				<field 
+				<field
 					type="spacer"
 					hr="true"
 					class="msm-spacer"
